@@ -4,8 +4,8 @@ define('LOGMD_POST_HEADER_DELIM', '++++');
 define('LOGMD_THEME_NAME', 'default');
 
 define('LOGMD_HTML_TITLE', 'LOG.md');
-define('LOGMD_HEADER_TITLE', 'LOG.md');
-define('LOGMD_HEADER_SUBTITLE', 'A flat-file markdown blogging sytem so primitive it barely works');
+define('LOGMD_HEADER_TITLE', 'This is LOG.md');
+define('LOGMD_HEADER_SUBTITLE', 'A flat-file markdown blogging sytem so primitive it\'s a miracle it works');
 
 define('LOGMD_ROBOTS', 'noindex,nofollow');
 define('LOGMD_SAFE_MODE', 1);

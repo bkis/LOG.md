@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title><?php echo LOGMD_HTML_TITLE ?></title>
     <meta name="robots" content="<?php echo LOGMD_ROBOTS ?>">
-    <base href="<?php echo LOGMD_POSTS_DIR ?>">
+    <!-- <base href="<?php echo LOGMD_POSTS_DIR ?>"> -->
     
     <!-- Mobile Specific Metas
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -13,7 +13,7 @@
 
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="../<?php echo LOGMD_THEME ?>style.css">
+    <link rel="stylesheet" href="<?php echo LOGMD_THEME ?>style.css">
 
 </head>
 <body>

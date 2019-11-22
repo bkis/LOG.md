@@ -25,7 +25,7 @@
             // reduce to actual content (exclude meta header)
             $post = substr($post, strpos($post, LOGMD_POST_HEADER_DELIM) + strlen(LOGMD_POST_HEADER_DELIM));
             // replace links to other markdown files with working LOG.md post links
-            $post = preg_replace('/([^(]+)\.md(?=\))/i', '../?post=$1', $post);
+            $post = preg_replace('/(?=\()([^(\/]+)\.md(?=\)\[)/i', '../?post=$1', $post);
             // pare with Parsedown
             $Parsedown = new Parsedown();
             if (LOGMD_SAFE_MODE){

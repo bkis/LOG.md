@@ -9,7 +9,7 @@ It does. Here, have some Java:
 System.out.println("Please, that's it?");
 ```
 
-... or some HTML:
+... or HTML or whatever:
 
 ```html
 <h1>LOG.md is naive!</h1>

@@ -24,6 +24,8 @@
         if ($entry){
             // reduce to actual content (exclude meta header)
             $entry = substr($entry, strpos($entry, LOGMD_ENTRY_HEADER_DELIM) + strlen(LOGMD_ENTRY_HEADER_DELIM));
+            // replace links to other markdown files with working LOG.md entry links
+            $entry = preg_replace('/([^(]+)\.md(?=\))/i', '../?entry=$1', $entry);
             // pare with Parsedown
             $Parsedown = new Parsedown();
             if (LOGMD_SAFE_MODE){

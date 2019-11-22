@@ -11,4 +11,5 @@ A flat-file markdown blogging sytem so primitive it's a miracle it works
 ## Attributions
 LOG.md doesn't really do anything.  
 All the hard work is done by:
-- Parsedown ([erusev/parsedown](https://github.com/erusev/parsedown))
+- **Parsedown** for Markdown parsing ([erusev/parsedown](https://github.com/erusev/parsedown))
+- **github-markdown-css** for Markdown styling in default theme ([sindresorhus/github-markdown-css](https://github.com/sindresorhus/github-markdown-css))

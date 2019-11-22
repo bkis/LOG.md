@@ -20,12 +20,12 @@
         // load parsedown
         require_once 'lib/Parsedown.php';
         // get raw content of post file
-        $post = file_get_contents(LOGMD_POSTS_DIR . LOGMD_SEP . htmlspecialchars($_GET['post']) . '.md');
+        $post = file_get_contents(LOGMD_POSTS_DIR . htmlspecialchars($_GET['post']) . '.md');
         if ($post){
             // reduce to actual content (exclude meta header)
             $post = substr($post, strpos($post, LOGMD_POST_HEADER_DELIM) + strlen(LOGMD_POST_HEADER_DELIM));
             // replace links to other markdown files with working LOG.md post links
-            $post = preg_replace('/(?=\()([^(\/]+)\.md(?=\)\[)/i', '../?post=$1', $post);
+            $post = preg_replace('/([^(]+)\.md(?=\))/i', '../?post=$1#content', $post);
             // pare with Parsedown
             $Parsedown = new Parsedown();
             if (LOGMD_SAFE_MODE){
@@ -46,7 +46,7 @@
         $posts = array();
         foreach ($postFiles as $i => $postFile){
             // get post content
-            $postText = file_get_contents(LOGMD_POSTS_DIR . LOGMD_SEP . $postFile);
+            $postText = file_get_contents(LOGMD_POSTS_DIR . $postFile);
             // parse post meta header
             $posts[$i] = parse_ini_string(
                 substr($postText, 0, strpos($postText, LOGMD_POST_HEADER_DELIM))

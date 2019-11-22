@@ -2,15 +2,17 @@ title = "Markdown Code Blocks"
 time = "2019-11-21"  
 ++++
 
-# Does it parse my code blocks?
+# Does it make my code blocks pretty?
 It does. Here, have some Java:
 
 ```java
-System.out.println("Hello World!");
+System.out.println("Please, that's it?");
 ```
 
 ... or some HTML:
 
 ```html
-<h1>A Heading!</h1>
+<h1>LOG.md is naive!</h1>
 ```
+
+For real code highlighting, you'd have to use [GitHub's Markdown API](https://developer.github.com/v3/markdown/).

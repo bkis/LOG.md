@@ -5,6 +5,6 @@ time = "2019-11-22"
 # Okay, and what about images?
 Looks like that works, too:
 
-![an image!](images/sample.png)
+![an image!](images/sample.jpg)
 
-Did you read the one about [code](code.md), yet?
+Did you look at the one about [code](code.md), yet?

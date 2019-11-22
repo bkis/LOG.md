@@ -1,7 +1,7 @@
 <?php
 
-    define('LOGMD_ENTRIES_DIR', 'entries');
-    define('LOGMD_ENTRY_HEADER_DELIM', '++++');
+    define('LOGMD_POSTS_DIR', 'posts');
+    define('LOGMD_POST_HEADER_DELIM', '++++');
     define('LOGMD_THEME_NAME', 'default');
 
     define('LOGMD_HTML_TITLE', 'LOG.md');

@@ -11,49 +11,49 @@
     }
 
     // prep
-    $entries;
-    $entry;
+    $posts;
+    $post;
     $error = false;
 
     // check req
-    if (isset($_GET['entry'])){
+    if (isset($_GET['post'])){
         // load parsedown
         require_once 'lib/Parsedown.php';
-        // get raw content of entry file
-        $entry = file_get_contents(LOGMD_ENTRIES_DIR . LOGMD_SEP . htmlspecialchars($_GET['entry']) . '.md');
-        if ($entry){
+        // get raw content of post file
+        $post = file_get_contents(LOGMD_POSTS_DIR . LOGMD_SEP . htmlspecialchars($_GET['post']) . '.md');
+        if ($post){
             // reduce to actual content (exclude meta header)
-            $entry = substr($entry, strpos($entry, LOGMD_ENTRY_HEADER_DELIM) + strlen(LOGMD_ENTRY_HEADER_DELIM));
-            // replace links to other markdown files with working LOG.md entry links
-            $entry = preg_replace('/([^(]+)\.md(?=\))/i', '../?entry=$1', $entry);
+            $post = substr($post, strpos($post, LOGMD_POST_HEADER_DELIM) + strlen(LOGMD_POST_HEADER_DELIM));
+            // replace links to other markdown files with working LOG.md post links
+            $post = preg_replace('/([^(]+)\.md(?=\))/i', '../?post=$1', $post);
             // pare with Parsedown
             $Parsedown = new Parsedown();
             if (LOGMD_SAFE_MODE){
                 $Parsedown->setSafeMode(true);
                 $Parsedown->setMarkupEscaped(true);
             }
-            $entry = $Parsedown->text($entry);
+            $post = $Parsedown->text($post);
         } else {
             $error = true;
         }
     } else {
-        // get all files and directories in entries dir
-        $entryFiles = array_diff(scandir(LOGMD_ENTRIES_DIR), array('.', '..'));
+        // get all files and directories in posts dir
+        $postFiles = array_diff(scandir(LOGMD_POSTS_DIR), array('.', '..'));
         // filter out everything that doesn't end on '.md' or '.MD'
-        $entryFiles = array_values(preg_grep('/\.md$/i', $entryFiles));
-        // collect entries meta data
-        $entries = array();
-        foreach ($entryFiles as $i => $entryFile){
-            // get entry content
-            $entryText = file_get_contents(LOGMD_ENTRIES_DIR . LOGMD_SEP . $entryFile);
-            // parse entry meta header
-            $entries[$i] = parse_ini_string(
-                substr($entryText, 0, strpos($entryText, LOGMD_ENTRY_HEADER_DELIM))
+        $postFiles = array_values(preg_grep('/\.md$/i', $postFiles));
+        // collect posts meta data
+        $posts = array();
+        foreach ($postFiles as $i => $postFile){
+            // get post content
+            $postText = file_get_contents(LOGMD_POSTS_DIR . LOGMD_SEP . $postFile);
+            // parse post meta header
+            $posts[$i] = parse_ini_string(
+                substr($postText, 0, strpos($postText, LOGMD_POST_HEADER_DELIM))
             );
-            // save entry file name
-            $entries[$i]['LINK'] = substr($entryFile, 0, strlen($entryFile) - 3);
+            // save post file name
+            $posts[$i]['LINK'] = substr($postFile, 0, strlen($postFile) - 3);
             // uppercase meta prop names
-            $entries[$i] = array_change_key_case($entries[$i], CASE_UPPER); 
+            $posts[$i] = array_change_key_case($posts[$i], CASE_UPPER); 
         }
     }
 
@@ -67,10 +67,10 @@
     // choose main content template
     if ($error){
         include LOGMD_THEME . '_404.php';
-    } elseif (isset($entry) && strlen($entry) > 0){
-        include LOGMD_THEME . '_entry.php';
+    } elseif (isset($post) && strlen($post) > 0){
+        include LOGMD_THEME . '_post.php';
     } else {
-        include LOGMD_THEME . '_entries.php';
+        include LOGMD_THEME . '_posts.php';
     }
     
     // theme footer

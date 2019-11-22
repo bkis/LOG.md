@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <title>LOG.md</title>
         <meta name="robots" content="<?php echo LOGMD_ROBOTS ?>">
-        <base href="<?php echo LOGMD_ENTRIES_DIR ?>/">
+        <base href="<?php echo LOGMD_POSTS_DIR ?>/">
         
         <!-- Mobile Specific Metas
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->

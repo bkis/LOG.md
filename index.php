@@ -34,6 +34,7 @@
             }
             $post = $Parsedown->text($post);
         } else {
+            // some error (this should really be more detailed)
             $error = true;
         }
     } else {

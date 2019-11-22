@@ -1,12 +1,12 @@
 
-<div class="markdown-body">
+<div class="site-frame">
 
-    <h2>There are <?php echo sizeof($posts) ?> posts:</h2>
+    <h2>Look at these <?php echo sizeof($posts) ?> beautiful posts:</h2>
 
     <ul>
         <?php foreach ($posts as $post){ ?>
             <li>
-                <a href="../?post=<?php echo $post['LINK'] ?>"><?php echo $post['TITLE'] ?></a>
+                <a href="?post=<?php echo $post['LINK'] ?>"><?php echo $post['TITLE'] ?></a>
                 <i>(<?php echo $post['TIME'] ?>)</i>
             </li>
         <?php } ?>

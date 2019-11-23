@@ -1,5 +1,5 @@
 # LOG.md
-A flat-file markdown blogging sytem so primitive it's a miracle it works
+A flat-file markdown blogging sytem so primitive it's a miracle it even works
 
 ## Actually ...
 ... it doesn't even work at all, yet.

@@ -1,14 +1,12 @@
     
 <?php if (LOGMD_FOOTER_LINK) { ?>
     <div id="footer-link">
-        <span>Built with</span>
+        <span>Built with&nbsp;</span>
         <a href="https://github.com/bkis/LOG.md"
         title="Visit LOG.md at GitHub!"
         target="_blank"
-        rel="noreferrer">
-            <img src="img/log.md-logo-dark-small.png" alt="LOG.md"/>
-        </a>
-        <span>&hearts;</span>
+        rel="noreferrer">LOG.md</a>
+        <span>&nbsp;&hearts;</span>
     </div>
 <?php } ?>
 

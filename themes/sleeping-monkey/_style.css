@@ -1,0 +1,68 @@
+@import url("retro.css");
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+.site-frame, .markdown-body {
+    padding: 1rem;
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+a {
+    margin: 0;
+    padding: 0;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+body, header, footer {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: rgb(0, 153, 66);
+    color: #fff;
+}
+
+header > div.site-frame {
+    display: flex;
+    align-items: center;
+}
+
+header > div.site-frame img {
+    width: 128px;
+    border-radius: 50%;
+}
+
+header > div.site-frame > div {
+    padding-left: 2rem;
+}
+
+#header-title {
+    font-size: 160%;
+}
+
+#header-subtitle {
+    opacity: 0.75;
+    max-width: 420px;
+}
+
+footer {
+    padding: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    font-size: 80%;
+}

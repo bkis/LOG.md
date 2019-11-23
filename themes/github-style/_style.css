@@ -56,14 +56,11 @@ header {
 header > div.site-frame {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 header > div.site-frame img {
     width: 64px;
-}
-
-header > div.site-frame > div {
-    padding-left: 2rem;
 }
 
 #header-title {

@@ -1,7 +1,7 @@
 <?php
 
 define('LOGMD_POST_HEADER_DELIM', '++++');
-define('LOGMD_THEME_NAME', 'github-style');
+define('LOGMD_THEME_NAME', 'sleeping-monkey');
 
 define('LOGMD_HTML_TITLE', 'LOG.md');
 define('LOGMD_HEADER_TITLE', 'This is LOG.md');

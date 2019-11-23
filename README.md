@@ -12,4 +12,5 @@ A flat-file markdown blogging sytem so primitive it's a miracle it works
 LOG.md doesn't really do anything.  
 All the hard work is done by:
 - **Parsedown** for Markdown parsing ([erusev/parsedown](https://github.com/erusev/parsedown))
-- **github-markdown-css** for Markdown styling in default theme ([sindresorhus/github-markdown-css](https://github.com/sindresorhus/github-markdown-css))
+- **retro.css** for Markdown styling in sleeping-monkey default theme ([markdowncss/retro](https://github.com/markdowncss/retro))
+- **github-markdown-css** for Markdown styling in github-style default theme ([sindresorhus/github-markdown-css](https://github.com/sindresorhus/github-markdown-css))

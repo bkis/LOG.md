@@ -1,7 +1,8 @@
 <?php
 
-    // load config
+    // load config and functions
     require_once 'config.php';
+    require_once 'func.php';
 
     // debug mode?
     if (LOGMD_DEBUG_MODE){
@@ -49,15 +50,13 @@
         $posts = array();
         foreach ($postFiles as $i => $postFile){
             // get post content
-            $postText = file_get_contents(LOGMD_POSTS_DIR . $postFile);
+            $posts[$i] = file_get_contents(LOGMD_POSTS_DIR . $postFile);
+            // reduce to post meta header
+            $posts[$i] = substr($posts[$i], 0, strpos($posts[$i], LOGMD_POST_HEADER_DELIM));
             // parse post meta header
-            $posts[$i] = parse_ini_string(
-                substr($postText, 0, strpos($postText, LOGMD_POST_HEADER_DELIM))
-            );
+            $posts[$i] = parsePostHeader($posts[$i]);
             // save post file name
             $posts[$i]['LINK'] = substr($postFile, 0, strlen($postFile) - 3);
-            // uppercase meta prop names
-            $posts[$i] = array_change_key_case($posts[$i], CASE_UPPER); 
         }
     }
 

@@ -1,5 +1,5 @@
-title = "Markdown Code Blocks"  
-time = "2019-11-21"  
+title: Markdown Code Blocks  
+time: 2019-11-21  
 ++++
 
 # Does it make my code blocks pretty?

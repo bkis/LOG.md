@@ -1,5 +1,5 @@
-title = "What About Images?"  
-time = "2019-11-22"  
+title: What About Images?  
+time: 2019-11-22  
 ++++
 
 # Okay, and what about images?

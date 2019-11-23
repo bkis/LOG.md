@@ -1,8 +1,15 @@
-**![LOG.md](img/log.md-logo-dark-small.png)**
+**![LOG.md](img/log.md-logo-dark-small.png)**  
+  
 A flat-file markdown blogging sytem so <br> primitive it's a miracle it even works
 
 ## Actually ...
 ... it doesn't work, yet.
+
+## Requirements
+- PHP 5.4 or higher
+- You want to write your posts in Markdown.
+- You don't need more than a start page with a paginated list of your posts.
+- You are motivated to make your own theme (if you don't like the default themes, which I hope you don't, because they are meant to be examples rather than aesthetic works).
 
 ## PAQs (Probably Asked Questions)
 **Is LOG.md a static site generator?** No.  

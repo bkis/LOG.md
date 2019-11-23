@@ -30,6 +30,9 @@
     }
 
     function parsePost($rawPostContent, $postFileName){
+        // load parsedown
+        require_once 'lib/Parsedown.php';
+        // parse header
         $data = parsePostHeader($rawPostContent, $postFileName);
         // add actual post md content
         $data['POST'] = substr(
@@ -50,6 +53,22 @@
         }
         $data['POST'] = $Parsedown->text($data['POST']);
         return $data;
+    }
+
+    function readPostHeader($postFileName){
+        $content = file_get_contents(LOGMD_POSTS_DIR . $postFileName);
+        return !$content ? false : parsePostHeader(
+            $content,
+            $postFileName
+        );
+    }
+
+    function readPost($postFileName){
+        $content = file_get_contents(LOGMD_POSTS_DIR . $postFileName);
+        return !$content ? false : parsePost(
+            $content,
+            $postFileName
+        );
     }
 
 ?>

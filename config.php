@@ -14,12 +14,20 @@ define('LOGMD_SAFE_MODE', 1);
 
 define('LOGMD_DEBUG_MODE', 1);
 
+
+
 //    |  DON'T  |
 //    |  TOUCH  |
 //    V  THIS!  V
 
+// internal config
 define('LOGMD_SEP', DIRECTORY_SEPARATOR);
 define('LOGMD_THEME', 'themes' . LOGMD_SEP . LOGMD_THEME_NAME . LOGMD_SEP);
 define('LOGMD_POSTS_DIR', 'posts' . LOGMD_SEP);
+
+// debug mode?
+ini_set('display_errors', LOGMD_DEBUG_MODE ? 1 : 0);
+ini_set('display_startup_errors', LOGMD_DEBUG_MODE ? 1 : 0);
+error_reporting( LOGMD_DEBUG_MODE ? E_ALL : 0);
 
 ?>

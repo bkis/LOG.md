@@ -13,7 +13,7 @@ A flat-file markdown blogging sytem so <br> primitive it's a miracle it even wor
 
 ## PAQs (Probably Asked Questions)
 **Is LOG.md a static site generator?** No.  
-**Could it be turned into one?** Yes. That would actually be a good idea, i think. A case for Future-Me.
+**Could it be turned into one?** Yes. That would actually be a good idea, i think. A case for future-me.
 
 ## Attributions
 LOG.md doesn't really do anything.  

@@ -45,6 +45,10 @@
             // parse post meta header
             $posts[$i] = parsePostHeader($posts[$i], $postFile);
         }
+        // sort posts by publishing time string
+        usort($posts, function($a, $b) {
+            return strcmp($a[LOGMD_POSTS_SORT_BY], $b[LOGMD_POSTS_SORT_BY]);
+        });
     }
 
 

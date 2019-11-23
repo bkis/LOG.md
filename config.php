@@ -1,12 +1,13 @@
 <?php
 
 define('LOGMD_POST_HEADER_DELIM', '++++');
-define('LOGMD_THEME_NAME', 'sleeping-monkey'); // default themes: "sleeping-monkey" and "github-style"
+define('LOGMD_THEME_NAME', 'sleeping-monkey'); // default themes: 'sleeping-monkey' and 'github-style'
 
 define('LOGMD_HTML_TITLE', 'LOG.md');
 define('LOGMD_HEADER_TITLE', 'This is LOG.md');
 define('LOGMD_HEADER_SUBTITLE', 'A flat-file markdown blogging sytem so primitive it\'s a miracle it works');
 define('LOGMD_FOOTER_LINK', 1);
+define('LOGMD_POSTS_SORT_BY', 'TIME'); // can be 'TIME', 'TITLE' or whatever you are using in your posts headers, but it HAS TO BE UPPERCASED, here!
 
 define('LOGMD_ROBOTS', 'noindex,nofollow');
 define('LOGMD_SAFE_MODE', 1);

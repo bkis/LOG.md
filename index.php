@@ -15,8 +15,14 @@
         $post = readPost(htmlspecialchars($_GET['post']) . '.md');
         $error = !$post;
     } else {
+        //get page number
+        $page;
+        if (!isset($_GET['p']) 
+            || ($page = intval(htmlspecialchars($_GET['p']))) <= 0){
+            $page = 1;
+        }
         // get all posts' meta data
-        $posts = getPostsData();
+        $posts = getPostsData($page);
     }
 
 

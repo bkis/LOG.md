@@ -77,11 +77,11 @@
         );
     }
 
-    function getPostsData(){
+    function getPostsData($page = 1){
         // get all files and directories in posts dir
         $posts = array_diff(scandir(LOGMD_POSTS_DIR), array('.', '..'));
         // filter out everything that doesn't end on '.md' or '.MD'
-        $posts = array_values(preg_grep('/\.md$/i', $posts));
+        $posts = preg_grep('/\.md$/i', $posts);
         foreach ($posts as $i => $postFile){
             // read post header
             $posts[$i] = readPostHeader($postFile);
@@ -90,7 +90,33 @@
         usort($posts, function($a, $b) {
             return strcmp($a[LOGMD_POSTS_SORT_BY], $b[LOGMD_POSTS_SORT_BY]);
         });
-        return $posts;
+        // re-calc numeric keys
+        $posts = array_values($posts);
+
+        //// PAGINATION
+        $size = LOGMD_POSTS_PER_PAGE; // results size
+        $total = sizeof($posts); // total posts count
+        $pages = intval($total / $size) + ($total % $size == 0 ? 0 : 1); // no. of pages
+        if ($total <= $size || $page > $pages) $page = 1; // set page to 1
+        $from = ($page - 1) * LOGMD_POSTS_PER_PAGE; // index of first post to return
+        $range = range($from, $from + LOGMD_POSTS_PER_PAGE - 1); // indexes range to return
+        // filter for requested posts
+        $posts = array_filter(
+            $posts,
+            function ($i) use ($range) {
+                return in_array($i, $range);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+
+        // put it all together
+        return [
+            'POSTS' => $posts,
+            'TOTAL' => $total,
+            'SIZE' => $size,
+            'PAGE' => $page,
+            'PAGES' => intval($total / $size) + ($total % $size == 0 ? 0 : 1)
+        ];
     }
 
 ?>

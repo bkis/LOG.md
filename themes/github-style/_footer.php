@@ -1,6 +1,4 @@
 
 <footer>
-    <div class="site-frame">
-        Built with <a href="https://github.com/bkis/LOG.md" title="Visit LOG.md at GitHub!">LOG.md</a> &hearts;
-    </div>
+    <i>This could be your footer!</i>
 </footer>

@@ -1,8 +1,9 @@
 # LOG.md
-A flat-file markdown blogging sytem so primitive it's a miracle it even works
+| A flat-file markdown blogging sytem so <br> primitive it's a miracle it even works | ![](img/log.md-logo-dark-small.png) |
+| --- | --- |
 
 ## Actually ...
-... it doesn't even work at all, yet.
+... it doesn't work, yet.
 
 ## PAQs (Probably Asked Questions)
 **Is LOG.md a static site generator?** No.  

@@ -88,7 +88,8 @@
         }
         // sort posts by publishing time string
         usort($posts, function($a, $b) {
-            return strcmp($a[LOGMD_POSTS_SORT_BY], $b[LOGMD_POSTS_SORT_BY]);
+            $compOne = strcmp($a[LOGMD_POSTS_SORT_BY_1], $b[LOGMD_POSTS_SORT_BY_1]);
+            return $compOne !== 0 ? $compOne : strcmp($a[LOGMD_POSTS_SORT_BY_2], $b[LOGMD_POSTS_SORT_BY_2]);
         });
         // re-calc numeric keys
         $posts = array_values($posts);
@@ -115,7 +116,7 @@
             'TOTAL' => $total,
             'SIZE' => $size,
             'PAGE' => $page,
-            'PAGES' => intval($total / $size) + ($total % $size == 0 ? 0 : 1)
+            'PAGES' => $pages
         ];
     }
 

@@ -2,5 +2,5 @@
 <a id="content"></a>
 
 <article class="markdown-body">
-    <?php echo $post ?>
+    <?php echo $post['POST'] ?>
 </article>

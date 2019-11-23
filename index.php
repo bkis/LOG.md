@@ -20,23 +20,14 @@
     if (isset($_GET['post'])){
         // load parsedown
         require_once 'lib/Parsedown.php';
+        // (potential) post file name
+        $postFileName = htmlspecialchars($_GET['post']) . '.md';
         // get raw content of post file
-        $post = file_get_contents(LOGMD_POSTS_DIR . htmlspecialchars($_GET['post']) . '.md');
+        $post = file_get_contents(LOGMD_POSTS_DIR . $postFileName);
         // parse post content
         if ($post){
-            // reduce to actual content (exclude meta header)
-            $post = substr($post, strpos($post, LOGMD_POST_HEADER_DELIM) + strlen(LOGMD_POST_HEADER_DELIM));
-            // replace links to other markdown files with working LOG.md post links (ugly)
-            $post = preg_replace('/([^(]+)\.md(?=\))/i', '?post=$1#content', $post);
-            // fix image paths (also ugly)
-            $post = preg_replace('/(!\[[^\]]+\]\()([^()]+)(?=\))/i', '$1' . LOGMD_POSTS_DIR . '$2', $post);
-            // pare with Parsedown
-            $Parsedown = new Parsedown();
-            if (LOGMD_SAFE_MODE){
-                $Parsedown->setSafeMode(true);
-                $Parsedown->setMarkupEscaped(true);
-            }
-            $post = $Parsedown->text($post);
+            // parse raw post file content
+            $post = parsePost($post, $postFileName);
         } else {
             // some error (this should really be more detailed)
             $error = true;
@@ -51,12 +42,8 @@
         foreach ($postFiles as $i => $postFile){
             // get post content
             $posts[$i] = file_get_contents(LOGMD_POSTS_DIR . $postFile);
-            // reduce to post meta header
-            $posts[$i] = substr($posts[$i], 0, strpos($posts[$i], LOGMD_POST_HEADER_DELIM));
             // parse post meta header
-            $posts[$i] = parsePostHeader($posts[$i]);
-            // save post file name
-            $posts[$i]['LINK'] = substr($postFile, 0, strlen($postFile) - 3);
+            $posts[$i] = parsePostHeader($posts[$i], $postFile);
         }
     }
 
@@ -70,7 +57,7 @@
     // choose main content template
     if ($error){
         include LOGMD_THEME . '_404.php';
-    } elseif (isset($post) && strlen($post) > 0){
+    } elseif (isset($post)){
         include LOGMD_THEME . '_post.php';
     } else {
         include LOGMD_THEME . '_posts.php';

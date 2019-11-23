@@ -25,8 +25,14 @@
         }
         // save post link id
         $data['LINK'] = preg_replace('/\.md$/i', '', $postFileName);
-        // uppercase meta prop keys and return data
-        return array_change_key_case($data, CASE_UPPER);
+        // uppercase meta prop keys
+        $data = array_change_key_case($data, CASE_UPPER);
+        // if TIME is missing, try to get last modification time of md file
+        if (!isset($data['TIME'])){
+            $data['TIME'] = date("Y-m-d H:i", filemtime(LOGMD_POSTS_DIR . $postFileName));
+        }
+        //return post meta data
+        return $data;
     }
 
     function parsePost($rawPostContent, $postFileName){

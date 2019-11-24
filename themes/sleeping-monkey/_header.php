@@ -1,7 +1,7 @@
 
 <header>
     <div class="site-frame">
-        <a href="index.php">
+        <a href="?">
             <img src="<?php echo LOGMD_THEME ?>img/monkey.jpg" alt=""/>
         </a>
         <div>

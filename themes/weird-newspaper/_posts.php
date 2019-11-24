@@ -1,7 +1,7 @@
 
 <div class="site-frame">
 
-    <h2>Look at these <?php echo $posts['TOTAL'] ?> beautiful posts:</h2>
+    <h2>We have these <?php echo $posts['TOTAL'] ?> brilliant articles for you to read:</h2>
 
     <ul>
         <?php foreach ($posts['POSTS'] as $post){ ?>

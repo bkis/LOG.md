@@ -109,8 +109,16 @@ img {
 	max-width: 100%;
 }
 
+ul {
+	list-style-type: none;
+}
+
 ul, ol {
 	list-style-position: outside;
+}
+
+li {
+	margin-bottom: 0.2rem;
 }
 
 blockquote {
@@ -131,7 +139,8 @@ header {
 }
 
 #header-title {
-    font-size: 160%;
+	font-size: 2.2rem;
+	font-variant-caps: small-caps;
 }
 
 #header-subtitle {

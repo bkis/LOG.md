@@ -1,0 +1,170 @@
+
+/* Poly Font - OFL License - José Nicolás Silva Schwarzenberg */
+@font-face {
+	font-family: 'Poly-Regular';
+	src: url('fonts/Poly-Regular.ttf') format('truetype');
+}
+
+/* Poly Font - OFL License - José Nicolás Silva Schwarzenberg */
+@font-face {
+	font-family: 'Poly-Italic';
+	src: url('fonts/Poly-Italic.ttf') format('truetype');
+}
+
+body {
+	font-family: 'Poly-Regular', serif;;
+	letter-spacing: .01em;
+	font-size: 18px;
+	color: #232323;
+	background-color: #ffffff;
+	line-height: 1.6;
+	font-weight: 400;
+}
+
+#site-container {
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-variant-caps: small-caps;
+	font-weight: normal;
+}
+
+h1 {
+	margin-top: 1rem;
+	margin-bottom: 0.8rem;
+	font-size: 2rem;
+}
+
+h2 {
+	margin-top: 1rem;
+	margin-bottom: .8rem;
+	font-size: 1.6rem;
+}
+
+h3 {
+	font-weight: bold;
+	margin-top: .8rem;
+	margin-bottom: .6rem;
+	font-size: 1.2rem;
+}
+
+h4 {
+	margin-top: .8rem;
+	margin-bottom: .6rem;
+	font-size: 1.2rem;
+}
+
+h5 {
+	font-weight: bold;
+	margin-top: .6rem;
+	margin-bottom: .4rem;
+	font-size: 1rem;
+}
+
+h6 {
+	margin-top: .6rem;
+	margin-bottom: .4rem;
+	font-size: 1rem;
+}
+
+p {
+	margin: 0;
+	margin-bottom: 1rem;
+}
+
+pre {
+	padding: .5rem;
+	background: #eee;
+}
+
+strong {
+	font-weight: 700;
+}
+
+i {
+	font-family: 'Poly-Italic', serif;
+}
+
+em {
+	font-style: normal;
+	font-variant-caps: small-caps;
+	background: #ff0;
+}
+
+a, a:any-link {
+	color: #232323;
+	text-decoration: underline;
+	transition: .1s;
+}
+
+a:hover {
+	background: #00f;
+	color: #fff;
+}
+
+img {
+	max-width: 100%;
+}
+
+ul, ol {
+	list-style-position: outside;
+}
+
+blockquote {
+	font-style: italic;
+}
+
+body, header, footer {
+    margin: 0;
+    padding: 0;
+}
+
+header, footer, main {
+	padding: 1rem;
+}
+
+header {
+	border-bottom: 2px solid #232323;
+}
+
+#header-title {
+    font-size: 160%;
+}
+
+#header-subtitle {
+    font-family: 'Poly-Italic', serif;
+}
+
+footer {
+    border-top: 2px solid #232323;
+    text-align: center;
+}
+
+.position {
+	font-size: 1.2rem;
+}
+
+.pagination {
+	font-size: 1.2rem;
+    text-align: center;
+}
+
+.pagination a:any-link {
+	text-decoration: none;
+}
+
+.pagination-link {
+    margin: 0 0.3rem;
+}
+
+.pagination-current {
+	background: #ff0;
+	text-decoration: line-through;
+}
+
+#footer-link {
+	opacity: 1;
+}

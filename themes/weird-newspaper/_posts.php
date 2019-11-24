@@ -7,7 +7,8 @@
         <?php foreach ($posts['POSTS'] as $post){ ?>
             <li>
                 <a href="?post=<?php echo $post['LINK'] ?>"><?php echo $post['TITLE'] ?></a>
-                <i> &ctdot; <?php echo $post['TIME'] ?></i>
+                &nbsp;&nbsp;&middot;&nbsp;&middot;&nbsp;&middot;&nbsp;
+                <i><?php echo $post['TIME'] ?></i>
             </li>
         <?php } ?>
     </ul>

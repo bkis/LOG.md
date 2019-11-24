@@ -5,8 +5,7 @@
         <a href="https://github.com/bkis/LOG.md"
         title="Visit LOG.md at GitHub!"
         target="_blank"
-        rel="noreferrer">LOG.md</a>
-        <span>&nbsp;&hearts;</span>
+        rel="noreferrer">L&bigcirc;G.md</a>
     </div>
 <?php } ?>
 

@@ -79,7 +79,7 @@
         );
     }
 
-    function readPost($postFileName){
+    function readPost($postFileName, $offset = 0){
         $content = file_get_contents(LOGMD_POSTS_DIR . $postFileName);
         return !$content ? false : parsePost(
             $content,
@@ -87,19 +87,28 @@
         );
     }
 
+    function getPostsFiles(){
+        return array_values(
+            preg_grep(
+                '/\.md$/i',
+                array_diff(
+                    scandir(LOGMD_POSTS_DIR),
+                    array('.', '..')
+                )
+            )
+        );
+    }
+
     function getPostsData($page = 1){
-        // get all files and directories in posts dir
-        $posts = array_diff(scandir(LOGMD_POSTS_DIR), array('.', '..'));
-        
-        // filter out everything that doesn't end on '.md' or '.MD'
-        $posts = preg_grep('/\.md$/i', $posts);
+        // get all posts files' paths
+        $posts = getPostsFiles();
 
         // read each post's header
         foreach ($posts as $i => $postFile){
             $posts[$i] = readPostHeader($postFile);
         }
 
-        // sort posts by publishing time string
+        // sort posts by primary and secondary sort features
         // ATTENTION: This also re-calculates the numeric keys of the array,
         // which is intentional, here! They don't have to be calculated again!
         usort($posts, function($a, $b) {

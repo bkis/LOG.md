@@ -1,6 +1,6 @@
 
 <div class="site-frame">
-    &larr; <a href="index.php">back</a><br/>
+    &larr; <a href="javascript:history.back()">back</a><br/>
     <strong>&rarr; <?php echo $post['TITLE'] ?></strong> (<?php echo $post['TIME'] ?>)
 </div>
 

@@ -15,3 +15,7 @@
     padding: 1rem;
     padding-top: 0;
 }
+
+#footer-link a {
+    font-weight: bold;
+}

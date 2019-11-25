@@ -41,7 +41,7 @@
         echo 'PROCESSING: ' . $imagePath . ' ... ';
         list($width) = getimagesize($imagePath);
         if ($width <= LOGMD_IMAGE_RESIZE_WIDTH){
-            echo 'already ' . $width . ' pixels wide';
+            echo 'already ' . $width . ' pixels wide<br/>';
             continue;
         }
         $image = new \Gumlet\ImageResize($imagePath);
@@ -49,8 +49,7 @@
         $image->save($imagePath . '_resized');
         rename($imagePath, $imagePath . '_original');
         rename($imagePath . '_resized', $imagePath);
-        echo 'resized from ' . $width . ' to ' . LOGMD_IMAGE_RESIZE_WIDTH . ' pixels width';
-        echo '<br/>';
+        echo 'resized from ' . $width . ' to ' . LOGMD_IMAGE_RESIZE_WIDTH . ' pixels width<br/>';
     }
 
 ?>

@@ -63,6 +63,8 @@
         
         // parse with Parsedown
         $Parsedown = new Parsedown();
+        $Parsedown->setUrlsLinked(false);
+        
         if (LOGMD_SAFE_MODE){
             $Parsedown->setSafeMode(true);
             $Parsedown->setMarkupEscaped(true);

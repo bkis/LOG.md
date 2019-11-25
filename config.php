@@ -20,6 +20,9 @@
 
     define('LOGMD_DEBUG_MODE', 1);
 
+    define('LOGMD_IMAGE_RESIZE_WIDTH', '960'); // target maximum pixel width of the images
+    define('LOGMD_IMAGE_RESIZE_QUALITY_JPG', '90'); // should be between 80 (okay) and 100 (very high)
+    define('LOGMD_IMAGE_RESIZE_QUALITY_PNG', '8'); // should be between 0 (no compression) and 9 (high compression)
 
 
     //    |  DON'T  |

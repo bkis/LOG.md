@@ -8,7 +8,9 @@
     define('LOGMD_HEADER_SUBTITLE', 'A flat-file markdown blogging sytem so primitive it\'s a miracle it even works');
     define('LOGMD_FOOTER_LINK', 1);
     define('LOGMD_POSTS_SORT_BY_1', 'TIME'); // can be 'TIME', 'TITLE' or whatever you are using in your posts headers, but it HAS TO BE UPPERCASED, here!
+    define('LOGMD_POSTS_SORT_BY_1_ASC', 0); // ascending (1) or descending (0)
     define('LOGMD_POSTS_SORT_BY_2', 'TITLE'); // can be 'TIME', 'TITLE' or whatever you are using in your posts headers, but it HAS TO BE UPPERCASED, here!
+    define('LOGMD_POSTS_SORT_BY_2_ASC', 1); // ascending (1) or descending (0)
     
     // pagination
     define('LOGMD_POSTS_PER_PAGE', 3);

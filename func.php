@@ -115,7 +115,12 @@
         // which is intentional, here! They don't have to be calculated again!
         usort($posts, function($a, $b) {
             $compOne = strcmp($a[LOGMD_POSTS_SORT_BY_1], $b[LOGMD_POSTS_SORT_BY_1]);
-            return $compOne !== 0 ? $compOne : strcmp($a[LOGMD_POSTS_SORT_BY_2], $b[LOGMD_POSTS_SORT_BY_2]);
+            $compOne *= LOGMD_POSTS_SORT_BY_1_ASC ? 1 : -1;
+            if (!$compOne){
+                $compOne = strcmp($a[LOGMD_POSTS_SORT_BY_2], $b[LOGMD_POSTS_SORT_BY_2]);
+                $compOne *= LOGMD_POSTS_SORT_BY_2_ASC ? 1 : -1;
+            }
+            return $compOne;
         });
 
         // PAGINATION: calculate values

@@ -7,7 +7,7 @@
 
     function fixMarkdownImagePaths($md){
         // fix image paths (also ugly)
-        return preg_replace('/(!\[[^\]]+\]\()([^()]+)(?=\))/i', '$1' . LOGMD_POSTS_DIR . '$2', $md);
+        return preg_replace('/(!\[[^\]]+\]\()([^()]+)(?=\))/i', '$1' . LOGMD_POSTS_DIR_PATH . '$2', $md);
     }
 
     function parsePostHeader($rawPostContent, $postFileName){
@@ -34,7 +34,7 @@
         
         // if TIME is missing, try to get last modification time of md file
         if (!isset($data['TIME'])){
-            $data['TIME'] = date("Y-m-d H:i", filemtime(LOGMD_POSTS_DIR . $postFileName));
+            $data['TIME'] = date("Y-m-d H:i", filemtime(LOGMD_POSTS_DIR_PATH . $postFileName));
         }
         
         //return post meta data
@@ -74,7 +74,7 @@
     }
 
     function readPostHeader($postFileName){
-        $content = file_get_contents(LOGMD_POSTS_DIR . $postFileName);
+        $content = file_get_contents(LOGMD_POSTS_DIR_PATH . $postFileName);
         return !$content ? false : parsePostHeader(
             $content,
             $postFileName
@@ -82,7 +82,7 @@
     }
 
     function readPost($postFileName, $offset = 0){
-        $content = file_get_contents(LOGMD_POSTS_DIR . $postFileName);
+        $content = file_get_contents(LOGMD_POSTS_DIR_PATH . $postFileName);
         return !$content ? false : parsePost(
             $content,
             $postFileName
@@ -94,7 +94,7 @@
             preg_grep(
                 '/\.md$/i',
                 array_diff(
-                    scandir(LOGMD_POSTS_DIR),
+                    scandir(LOGMD_POSTS_DIR_PATH),
                     array('.', '..')
                 )
             )

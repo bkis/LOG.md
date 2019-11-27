@@ -1,6 +1,6 @@
 <?php
 
-    define('LOGMD_POSTS_DIRECTRY', 'posts');
+    define('LOGMD_POSTS_DIRECTORY', 'posts');
     define('LOGMD_POST_HEADER_DELIM', '++++');
     define('LOGMD_THEME_NAME', 'weird-newspaper'); // default themes: 'sleeping-monkey', 'weird-newspaper' and 'github-style'
 
@@ -38,7 +38,7 @@
     // paths
     define('LOGMD_SEP', DIRECTORY_SEPARATOR);
     define('LOGMD_THEME', 'themes' . LOGMD_SEP . LOGMD_THEME_NAME . LOGMD_SEP);
-    define('LOGMD_POSTS_DIR_PATH', LOGMD_POSTS_DIRECTRY . LOGMD_SEP);
+    define('LOGMD_POSTS_DIR_PATH', LOGMD_POSTS_DIRECTORY . LOGMD_SEP);
 
     // apply debug mode
     ini_set('display_errors', LOGMD_DEBUG_MODE ? 1 : 0);

@@ -12,7 +12,7 @@
     $images = [];
     
     // traverse posts directory to find image files
-    $it = new RecursiveDirectoryIterator('../../posts/');
+    $it = new RecursiveDirectoryIterator('../../' . LOGMD_POSTS_DIRECTORY);
     foreach(new RecursiveIteratorIterator($it) as $file) {
         $ex = explode('.', $file);
         if (in_array(strtolower(array_pop($ex)), $display)) {

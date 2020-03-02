@@ -12,9 +12,8 @@ A flat-file markdown blogging sytem so <br> primitive it's a miracle it works at
 - You don't need more than a start page with a paginated list of your posts.
 - You are motivated to make your own theme (if you don't like the default themes, which I hope you don't, because they are meant to be examples rather than aesthetic works).
 
-## PAQs (Probably Asked Questions)
-**Is LOG.md a static site generator?** No.  
-**Could it be turned into one?** Yes. That would actually be a good idea, i think. A case for future-me.
+## Is LOG.md a static site generator?
+No. Kind of. Yes. Not really. It caches and re-uses the rendered HTML of each post (so it doesn't have to do the Markdown rendering again), but it still reads the posts meta data from your posts files headers at each call.
 
 ## Attributions
 LOG.md doesn't really do anything.  

@@ -6,7 +6,7 @@ A flat-file markdown blogging sytem so <br> primitive it's a miracle it even wor
 ... it doesn't work, yet.
 
 ## Requirements
-- PHP 5.4 or higher
+- PHP 5.6 or higher
 - php-gd module installed (optional, needed for batch image resizing job)
 - You want to write your posts in Markdown.
 - You don't need more than a start page with a paginated list of your posts.

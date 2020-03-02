@@ -10,64 +10,19 @@
         return preg_replace('/(!\[[^\]]+\]\()([^()]+)(?=\))/i', '$1' . LOGMD_POSTS_DIR_PATH . '$2', $md);
     }
 
-    function parsePostHeader($rawPostContent, $postFileName){
-        $data = array();
-        
-        // reduce to post meta header
-        $rawPostContent = substr($rawPostContent, 0, 
-            strpos($rawPostContent, LOGMD_POST_HEADER_DELIM));
-        
-            // split into lines
-        $lines = explode(PHP_EOL, $rawPostContent);
-        foreach ($lines as $line){
-            if (!strpos($line, ':')) continue;
-            // separate prop key and value
-            $data[trim(substr($line, 0, strpos($line, ':')))] 
-                = trim(substr($line, strpos($line, ':') + 1));
-        }
-        
-        // save post link id
-        $data['LINK'] = preg_replace('/\.md$/i', '', $postFileName);
-        
-        // uppercase meta prop keys
-        $data = array_change_key_case($data, CASE_UPPER);
-        
-        // if TIME is missing, try to get last modification time of md file
-        if (!isset($data['TIME'])){
-            $data['TIME'] = date("Y-m-d H:i", filemtime(LOGMD_POSTS_DIR_PATH . $postFileName));
-        }
-        
-        //return post meta data
-        return $data;
-    }
-
-    function parsePost($rawPostContent, $postFileName){
-        
-        
-        // parse header
-        $data = parsePostHeader($rawPostContent, $postFileName);
-        
+    function readPostContent($postData){
         //check if rendered version of post exists
-        $renderedPath = LOGMD_RENDERED . $postFileName . '.html';
+        $renderedPath = LOGMD_RENDERED . $postData['FILE'] . '.html';
         if (file_exists($renderedPath)){
-            $data['POST'] = file_get_contents($renderedPath);
+            $postData['POST'] = file_get_contents($renderedPath);
         } else {
             //// post not rendered, yet. render now...
             // load parsedown
             require_once 'lib/Parsedown.php';
-
-            // add actual post md content
-            $data['POST'] = substr(
-                $rawPostContent,
-                strpos(
-                    $rawPostContent,
-                    LOGMD_POST_HEADER_DELIM
-                ) + strlen(LOGMD_POST_HEADER_DELIM)
-            );
             
             // process links and paths in post md content
-            $data['POST'] = fixMarkdownLinks($data['POST']);
-            $data['POST'] = fixMarkdownImagePaths($data['POST']);
+            $postData['POST'] = fixMarkdownLinks($postData['POST']);
+            $postData['POST'] = fixMarkdownImagePaths($postData['POST']);
             
             // parse with Parsedown
             $Parsedown = new Parsedown();
@@ -77,30 +32,69 @@
                 $Parsedown->setSafeMode(true);
                 $Parsedown->setMarkupEscaped(true);
             }
-            $data['POST'] = $Parsedown->text($data['POST']);
+            $postData['POST'] = $Parsedown->text($postData['POST']);
 
             //...and save rendered HTML for next time
-            file_put_contents($renderedPath, $data['POST']);
+            file_put_contents($renderedPath, $postData['POST']);
         }
+        return $postData['POST'];
+    }
+
+
+    function readPostData($rawPostContent, $postFileName){
+        // extract post meta header
+        $headerContent = substr($rawPostContent, 0, 
+            strpos($rawPostContent, LOGMD_POST_HEADER_DELIM));
+        // no header content found
+        if (!$headerContent) return false;
         
+        //// parse header
+        $data = array();
+        // split into lines
+        $lines = explode(PHP_EOL, $headerContent);
+        foreach ($lines as $line){
+            if (!strpos($line, ':')) continue;
+            // separate prop key and value
+            $data[trim(substr($line, 0, strpos($line, ':')))] 
+                = trim(substr($line, strpos($line, ':') + 1));
+        }
+
+        // save post link id
+        $data['LINK'] = preg_replace('/\.md$/i', '', $postFileName);
+        $data['FILE'] = $postFileName;
+        
+        // uppercase meta prop keys
+        $data = array_change_key_case($data, CASE_UPPER);
+        
+        // if TIME is missing, try to get last modification time of md file
+        if (!isset($data['TIME'])){
+            $data['TIME'] = date("Y-m-d H:i", filemtime(LOGMD_POSTS_DIR_PATH . $postFileName));
+        }
+
+        // extract actual post md content
+        $data['POST'] = substr($rawPostContent,
+            strpos($rawPostContent, LOGMD_POST_HEADER_DELIM) + strlen(LOGMD_POST_HEADER_DELIM));
+        
+        //return post data
         return $data;
     }
 
-    function readPostHeader($postFileName){
-        $content = file_get_contents(LOGMD_POSTS_DIR_PATH . $postFileName);
-        return !$content ? false : parsePostHeader(
-            $content,
-            $postFileName
-        );
+
+    function readPostFile($postFileName){
+        if (!file_exists(LOGMD_POSTS_DIR_PATH . $postFileName)) return false;
+        return file_get_contents(LOGMD_POSTS_DIR_PATH . $postFileName);
     }
 
+
     function readPost($postFileName, $offset = 0){
-        $content = file_get_contents(LOGMD_POSTS_DIR_PATH . $postFileName);
-        return !$content ? false : parsePost(
-            $content,
-            $postFileName
-        );
+        $rawPostContent = readPostFile($postFileName);
+        if (!$rawPostContent) return false;
+        $post = readPostData($rawPostContent, $postFileName);
+        // get/parse content
+        $post['POST'] = readPostContent($post);
+        return $post;
     }
+
 
     function getPostsFiles(){
         return array_values(
@@ -114,13 +108,14 @@
         );
     }
 
-    function getPostsData($page = 1){
+
+    function readPosts($page = 1){
         // get all posts files' paths
         $posts = getPostsFiles();
 
-        // read each post's header
-        foreach ($posts as $i => $postFile){
-            $posts[$i] = readPostHeader($postFile);
+        // read each post's data without parsing/reading html
+        foreach ($posts as $i => $postFileName){
+            $posts[$i] = readPostData(readPostFile($postFileName), $postFileName);
         }
 
         // sort posts by primary and secondary sort features
@@ -152,6 +147,11 @@
             },
             ARRAY_FILTER_USE_KEY
         );
+
+        // Get / render html content of each post to show
+        foreach ($posts as $post){
+            $post['POST'] = readPostContent($post);
+        }
 
         // put it all together
         return [

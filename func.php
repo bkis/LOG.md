@@ -86,12 +86,12 @@
     }
 
 
-    function readPost($postFileName, $offset = 0){
+    function readPost($postFileName, $headerOnly = false){
         $rawPostContent = readPostFile($postFileName);
         if (!$rawPostContent) return false;
         $post = readPostData($rawPostContent, $postFileName);
         // get/parse content
-        $post['POST'] = readPostContent($post);
+        if (!$headerOnly) $post['POST'] = readPostContent($post);
         return $post;
     }
 
@@ -115,7 +115,7 @@
 
         // read each post's data without parsing/reading html
         foreach ($posts as $i => $postFileName){
-            $posts[$i] = readPostData(readPostFile($postFileName), $postFileName);
+            $posts[$i] = readPost($postFileName);
         }
 
         // sort posts by primary and secondary sort features

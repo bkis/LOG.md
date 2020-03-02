@@ -1,6 +1,6 @@
 **![LOG.md](img/log.md-logo-dark-small.png)**  
   
-A flat-file markdown blogging sytem so <br> primitive it's a miracle it even works
+A flat-file markdown blogging sytem so <br> primitive it's a miracle it works at all
 
 ## Actually ...
 ... it doesn't work, yet.

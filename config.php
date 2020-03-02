@@ -7,7 +7,7 @@
 
     define('LOGMD_HTML_TITLE', 'LOG.md');
     define('LOGMD_HEADER_TITLE', 'This is LOG.md');
-    define('LOGMD_HEADER_SUBTITLE', 'A flat-file markdown blogging sytem so primitive it\'s a miracle it even works');
+    define('LOGMD_HEADER_SUBTITLE', 'A flat-file markdown blogging sytem so primitive it\'s a miracle it works at all');
     define('LOGMD_FOOTER_LINK', 1);
     define('LOGMD_POSTS_SORT_BY_1', 'TIME'); // can be 'TIME', 'TITLE' or whatever you are using in your posts headers, but it HAS TO BE UPPERCASED, here!
     define('LOGMD_POSTS_SORT_BY_1_ASC', 0); // ascending (1) or descending (0)

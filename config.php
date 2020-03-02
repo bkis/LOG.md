@@ -38,6 +38,7 @@
     // paths
     define('LOGMD_SEP', DIRECTORY_SEPARATOR);
     define('LOGMD_THEME', 'themes' . LOGMD_SEP . LOGMD_THEME_NAME . LOGMD_SEP);
+    define('LOGMD_RENDERED', 'rendered' . LOGMD_SEP);
     define('LOGMD_POSTS_DIR_PATH', LOGMD_POSTS_DIRECTORY . LOGMD_SEP);
 
     // apply debug mode

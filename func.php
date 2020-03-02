@@ -42,34 +42,47 @@
     }
 
     function parsePost($rawPostContent, $postFileName){
-        // load parsedown
-        require_once 'lib/Parsedown.php';
+        
         
         // parse header
         $data = parsePostHeader($rawPostContent, $postFileName);
         
-        // add actual post md content
-        $data['POST'] = substr(
-            $rawPostContent,
-            strpos(
+        //check if rendered version of post exists
+        $renderedPath = LOGMD_RENDERED . $postFileName . '.html';
+        if (file_exists($renderedPath)){
+            $data['POST'] = file_get_contents($renderedPath);
+        } else {
+            //// post not rendered, yet. render now...
+            // load parsedown
+            require_once 'lib/Parsedown.php';
+
+            // add actual post md content
+            $data['POST'] = substr(
                 $rawPostContent,
-                LOGMD_POST_HEADER_DELIM
-            ) + strlen(LOGMD_POST_HEADER_DELIM)
-        );
-        
-        // process links and paths in post md content
-        $data['POST'] = fixMarkdownLinks($data['POST']);
-        $data['POST'] = fixMarkdownImagePaths($data['POST']);
-        
-        // parse with Parsedown
-        $Parsedown = new Parsedown();
-        $Parsedown->setUrlsLinked(false);
-        
-        if (LOGMD_SAFE_MODE){
-            $Parsedown->setSafeMode(true);
-            $Parsedown->setMarkupEscaped(true);
+                strpos(
+                    $rawPostContent,
+                    LOGMD_POST_HEADER_DELIM
+                ) + strlen(LOGMD_POST_HEADER_DELIM)
+            );
+            
+            // process links and paths in post md content
+            $data['POST'] = fixMarkdownLinks($data['POST']);
+            $data['POST'] = fixMarkdownImagePaths($data['POST']);
+            
+            // parse with Parsedown
+            $Parsedown = new Parsedown();
+            $Parsedown->setUrlsLinked(false);
+            
+            if (LOGMD_SAFE_MODE){
+                $Parsedown->setSafeMode(true);
+                $Parsedown->setMarkupEscaped(true);
+            }
+            $data['POST'] = $Parsedown->text($data['POST']);
+
+            //...and save rendered HTML for next time
+            file_put_contents($renderedPath, $data['POST']);
         }
-        $data['POST'] = $Parsedown->text($data['POST']);
+        
         return $data;
     }
 

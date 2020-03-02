@@ -3,6 +3,7 @@
     define('LOGMD_POSTS_DIRECTORY', 'posts');
     define('LOGMD_POST_HEADER_DELIM', '++++');
     define('LOGMD_THEME_NAME', 'weird-newspaper'); // default themes: 'sleeping-monkey', 'weird-newspaper' and 'github-style'
+    define('LOGMD_AUTH', 'Change this!');
 
     define('LOGMD_HTML_TITLE', 'LOG.md');
     define('LOGMD_HEADER_TITLE', 'This is LOG.md');

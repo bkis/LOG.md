@@ -1,5 +1,8 @@
 <?php
 
+    //auth
+    include '../auth.php';
+
     //// PROCESS IMAGES
 
     // load config

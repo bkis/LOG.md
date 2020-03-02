@@ -22,7 +22,7 @@
             $page = 1;
         }
         // get all posts' meta data
-        $posts = getPostsData($page);
+        $posts = readPosts($page);
     }
 
 

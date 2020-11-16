@@ -1,5 +1,5 @@
 > ⚠ **REPO ARCHIVED!**  
-> This litte project, I like to think, was a great idea when I started it. Today, it wouldn't make much sense to finish it, because there are far superior projects doing the [_exact same thing_](https://github.com/verless/verless) - only better.
+> This litte project, I like to think, was a great idea when I started it. Today, it wouldn't make much sense to finish it, because there are far superior projects doing the [_exact same thing_](https://github.com/verless/verless) - only _much_ better.
 
 **![LOG.md](img/log.md-logo-dark-small.png)**  
   

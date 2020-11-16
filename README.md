@@ -1,3 +1,6 @@
+> ⚠ **REPO ARCHIVED!**  
+> This litte project, I like to think, was a great idea when I started it. Today, it wouldn't make much sense to finish it, because there are far superior projects doing the [_exact same thing_](https://github.com/verless/verless) - only better.
+
 **![LOG.md](img/log.md-logo-dark-small.png)**  
   
 A flat-file markdown blogging sytem so <br> primitive it's a miracle it works at all
